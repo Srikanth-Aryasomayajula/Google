@@ -22,13 +22,13 @@ const fakeGoogle = document.getElementById('fakeGoogle');
 
 
 function showFakeGoogle() {
-document.body.style.overflow = 'hidden';
-fakeGoogle.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    fakeGoogle.style.display = 'block';
 }
 
 
 function hideFakeGoogle() {
-fakeGoogle.style.display = 'none';
+    fakeGoogle.style.display = 'none';
 }
 
 // Returns the best language code for recognition based on given phrase (heuristic)
@@ -108,7 +108,7 @@ recordBtn.onclick = async function() {
     mediaRecorder.start();
 
     // Start Speech Recognition (auto lang)
-    initRecognition();
+    // initRecognition();
 
     recordBtn.disabled = true;
     stopBtn.disabled = false;
@@ -195,13 +195,13 @@ function initRecognition() {
   
     // Update UI exactly once per event:
     // - Subtitles: all final lines + current interim preview
-    const finals = transcription.join('\n');
-    subtitles.textContent = interimText
-      ? finals + '\n' + interimText.trim()
-      : finals;
+    // const finals = transcription.join('\n');
+    // subtitles.textContent = interimText
+    //  ? finals + '\n' + interimText.trim()
+    //  : finals;
   
     // - Translations: only finalized translated lines (same count as transcription)
-    translations.textContent = translation.join('\n');
+    // translations.textContent = translation.join('\n');
   };
 
   recognition.onerror = function(ev) {
@@ -261,6 +261,7 @@ async function translateText(text, from = 'auto', to = 'en') {
     return '[Translation error]';
   }
 } */
+
 
 
 
