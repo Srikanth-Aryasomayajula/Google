@@ -107,6 +107,7 @@ stopBtn.onclick = function() {
   status.textContent = 'Processing...';
   recordBtn.disabled = false;
   stopBtn.disabled = true;
+  preview.style.display = 'block';
   recording = false;
 };
 
@@ -231,4 +232,5 @@ async function translateText(text, from = 'auto', to = 'en') {
     return '[Translation error]';
   }
 } */
+
 
