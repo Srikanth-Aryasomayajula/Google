@@ -76,10 +76,10 @@ recordBtn.onclick = async function() {
     transcription = [];
     translation = [];
     langDetected = '';
-    subtitles.textContent = '';
-    translations.textContent = '';
+    // subtitles.textContent = '';
+    // translations.textContent = '';
     downloadLink.style.display = "none";
-    status.textContent = 'WIP';
+    status.textContent = 'Recording...';
 
     // Init MediaRecorder
     mediaRecorder = new MediaRecorder(combinedStream);
@@ -126,7 +126,7 @@ function showRecording() {
 
   downloadLink.download = filename;
   downloadLink.style.display = "block";
-  status.textContent = 'Done';
+  status.textContent = 'Done. You can download your recording below!';
 
 }
 
@@ -202,6 +202,7 @@ function initRecognition() {
   recognition.start();
 }
 
+/*
 // LibreTranslate API for translation (de→en)
 async function translateText(text, from = 'auto', to = 'en') {
   if (!text || !text.trim()) return '';
@@ -229,4 +230,5 @@ async function translateText(text, from = 'auto', to = 'en') {
     console.error('Translate fetch error', e);
     return '[Translation error]';
   }
-}
+} */
+
