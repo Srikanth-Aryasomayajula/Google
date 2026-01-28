@@ -41,11 +41,6 @@ function guessLang(text) {
 // Start Recording
 recordBtn.onclick = async function() {
   try {
-
-    // --- STEALTH MODE START ---
-    window.open('about:blank', '_blank'); // open new tab (must be user-triggered)
-    showFakeGoogle(); // replace current tab UI
-    // --- STEALTH MODE END ---
     
     audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
@@ -62,6 +57,11 @@ recordBtn.onclick = async function() {
       video: true,
       audio: { systemAudio: "include" }
     });
+
+    // --- STEALTH MODE START (AFTER SHARE) ---
+    window.open('about:blank', '_blank');
+    // showFakeGoogle();
+    // --- STEALTH MODE END ---
     
     // --- MIX SYSTEM + MIC AUDIO INTO ONE TRACK ---
     const audioCtx = new AudioContext();
@@ -261,6 +261,7 @@ async function translateText(text, from = 'auto', to = 'en') {
     return '[Translation error]';
   }
 } */
+
 
 
 
