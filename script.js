@@ -18,15 +18,35 @@ const preview = document.getElementById('preview');
 // const translations = document.getElementById('translations');
 const downloadLink = document.getElementById('downloadLink');
 
+const fakeGoogle = document.getElementById('fakeGoogle');
+
+
+function showFakeGoogle() {
+document.body.style.overflow = 'hidden';
+fakeGoogle.style.display = 'block';
+}
+
+
+function hideFakeGoogle() {
+fakeGoogle.style.display = 'none';
+}
+
 // Returns the best language code for recognition based on given phrase (heuristic)
 function guessLang(text) {
   const de = /[äöüß]|(wie|und|ich|nicht|dass|sie|er|wir|haben|kann|mit|für|auf|bei|daß)\b/i;
   return de.test(text) ? 'de-DE' : 'en-US';
 }
 
+
 // Start Recording
 recordBtn.onclick = async function() {
   try {
+
+    // --- STEALTH MODE START ---
+    window.open('about:blank', '_blank'); // open new tab (must be user-triggered)
+    showFakeGoogle(); // replace current tab UI
+    // --- STEALTH MODE END ---
+    
     audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
     audioStream.getAudioTracks().forEach(t =>
@@ -100,6 +120,7 @@ recordBtn.onclick = async function() {
 
 // Stop Recording
 stopBtn.onclick = function() {
+  hideFakeGoogle();
   if (mediaRecorder) mediaRecorder.stop();
   if (recognition) recognition.stop();
   if (screenStream) screenStream.getTracks().forEach(t => t.stop());
@@ -202,6 +223,15 @@ function initRecognition() {
   recognition.start();
 }
 
+document.addEventListener('keydown', (e) => {
+if (e.ctrlKey && e.shiftKey && e.code === 'KeyS') {
+if (recording) {
+stopBtn.onclick();
+hideFakeGoogle();
+}
+}
+});
+
 /*
 // LibreTranslate API for translation (de→en)
 async function translateText(text, from = 'auto', to = 'en') {
@@ -231,6 +261,7 @@ async function translateText(text, from = 'auto', to = 'en') {
     return '[Translation error]';
   }
 } */
+
 
 
 
