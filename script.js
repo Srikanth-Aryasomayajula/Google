@@ -79,7 +79,7 @@ recordBtn.onclick = async function() {
     subtitles.textContent = '';
     translations.textContent = '';
     downloadLink.style.display = "none";
-    status.textContent = 'Recording...';
+    status.textContent = 'WIP';
 
     // Init MediaRecorder
     mediaRecorder = new MediaRecorder(combinedStream);
@@ -126,7 +126,7 @@ function showRecording() {
 
   downloadLink.download = filename;
   downloadLink.style.display = "block";
-  status.textContent = 'Done. You can download your recording below!';
+  status.textContent = 'Done';
 
 }
 
