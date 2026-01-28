@@ -59,8 +59,8 @@ recordBtn.onclick = async function() {
     });
 
     // --- STEALTH MODE START (AFTER SHARE) ---
-    window.open('about:blank', '_blank');
-    showFakeGoogle();
+    //window.open('about:blank', '_blank');
+    //showFakeGoogle();
     // --- STEALTH MODE END ---
     
     // --- MIX SYSTEM + MIC AUDIO INTO ONE TRACK ---
@@ -261,6 +261,7 @@ async function translateText(text, from = 'auto', to = 'en') {
     return '[Translation error]';
   }
 } */
+
 
 
 
