@@ -14,22 +14,9 @@ const recordBtn = document.getElementById('recordBtn');
 const stopBtn = document.getElementById('stopBtn');
 const status = document.getElementById('status');
 const preview = document.getElementById('preview');
-// const subtitles = document.getElementById('subtitles');
-// const translations = document.getElementById('translations');
+const subtitles = document.getElementById('subtitles');
+const translations = document.getElementById('translations');
 const downloadLink = document.getElementById('downloadLink');
-
-const fakeGoogle = document.getElementById('fakeGoogle');
-
-
-function showFakeGoogle() {
-    document.body.style.overflow = 'hidden';
-    fakeGoogle.style.display = 'block';
-}
-
-
-function hideFakeGoogle() {
-    fakeGoogle.style.display = 'none';
-}
 
 // Returns the best language code for recognition based on given phrase (heuristic)
 function guessLang(text) {
@@ -37,11 +24,9 @@ function guessLang(text) {
   return de.test(text) ? 'de-DE' : 'en-US';
 }
 
-
 // Start Recording
 recordBtn.onclick = async function() {
   try {
-    
     audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
     audioStream.getAudioTracks().forEach(t =>
@@ -57,11 +42,6 @@ recordBtn.onclick = async function() {
       video: true,
       audio: { systemAudio: "include" }
     });
-
-    // --- STEALTH MODE START (AFTER SHARE) ---
-    //window.open('about:blank', '_blank');
-    //showFakeGoogle();
-    // --- STEALTH MODE END ---
     
     // --- MIX SYSTEM + MIC AUDIO INTO ONE TRACK ---
     const audioCtx = new AudioContext();
@@ -96,10 +76,10 @@ recordBtn.onclick = async function() {
     transcription = [];
     translation = [];
     langDetected = '';
-    // subtitles.textContent = '';
-    // translations.textContent = '';
+    subtitles.textContent = '';
+    translations.textContent = '';
     downloadLink.style.display = "none";
-    status.textContent = 'WIP';
+    status.textContent = 'Recording...';
 
     // Init MediaRecorder
     mediaRecorder = new MediaRecorder(combinedStream);
@@ -108,7 +88,7 @@ recordBtn.onclick = async function() {
     mediaRecorder.start();
 
     // Start Speech Recognition (auto lang)
-    // initRecognition();
+    initRecognition();
 
     recordBtn.disabled = true;
     stopBtn.disabled = false;
@@ -120,7 +100,6 @@ recordBtn.onclick = async function() {
 
 // Stop Recording
 stopBtn.onclick = function() {
-  hideFakeGoogle();
   if (mediaRecorder) mediaRecorder.stop();
   if (recognition) recognition.stop();
   if (screenStream) screenStream.getTracks().forEach(t => t.stop());
@@ -147,7 +126,7 @@ function showRecording() {
 
   downloadLink.download = filename;
   downloadLink.style.display = "block";
-  status.textContent = 'Done';
+  status.textContent = 'Done. You can download your recording below!';
 
 }
 
@@ -195,13 +174,13 @@ function initRecognition() {
   
     // Update UI exactly once per event:
     // - Subtitles: all final lines + current interim preview
-    // const finals = transcription.join('\n');
-    // subtitles.textContent = interimText
-    //  ? finals + '\n' + interimText.trim()
-    //  : finals;
+    const finals = transcription.join('\n');
+    subtitles.textContent = interimText
+      ? finals + '\n' + interimText.trim()
+      : finals;
   
     // - Translations: only finalized translated lines (same count as transcription)
-    // translations.textContent = translation.join('\n');
+    translations.textContent = translation.join('\n');
   };
 
   recognition.onerror = function(ev) {
@@ -223,16 +202,6 @@ function initRecognition() {
   recognition.start();
 }
 
-document.addEventListener('keydown', (e) => {
-if (e.ctrlKey && e.shiftKey && e.code === 'KeyS') {
-if (recording) {
-stopBtn.onclick();
-hideFakeGoogle();
-}
-}
-});
-
-/*
 // LibreTranslate API for translation (de→en)
 async function translateText(text, from = 'auto', to = 'en') {
   if (!text || !text.trim()) return '';
@@ -260,13 +229,4 @@ async function translateText(text, from = 'auto', to = 'en') {
     console.error('Translate fetch error', e);
     return '[Translation error]';
   }
-} */
-
-
-
-
-
-
-
-
-
+}
