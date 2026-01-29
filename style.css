@@ -7,12 +7,9 @@ body {
 }
 
 .container {
-  max-width: 700px;
-  margin: 2em auto;
-  padding: 1em 2em 2em 2em;
-  background: #fff;
-  border-radius: 13px;
-  box-shadow: 0 2px 12px rgba(30, 144, 255, 0.12);
+  width: 100vw;
+  min-height: 100vh;
+  background: #1f1f1f;
 }
 
 h1, h2 {
@@ -91,4 +88,5 @@ a#downloadLink {
 a#downloadLink:hover {
   background: #219150;
 }
+
 
