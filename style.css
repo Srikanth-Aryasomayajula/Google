@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f7fafd;
+  background: #1F1F1F;
   color: #222;
   margin: 0;
   padding: 0;
@@ -91,3 +91,4 @@ a#downloadLink {
 a#downloadLink:hover {
   background: #219150;
 }
+
