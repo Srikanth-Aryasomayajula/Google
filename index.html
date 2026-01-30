@@ -1,52 +1,103 @@
-ings<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Favicon: microphone -->
-  <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%221em%22 font-size=%2280%22>🎙️</text></svg>"> 
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Inter is closest public font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon: microphone -->
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%221em%22 font-size=%2280%22>🎙️</text></svg>"> 
+    
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body>  
-  <main class="container">
 
-    <div class="topbar">
-      <div class="top-left">
-        <a>About</a>
-        <a>Store</a>
-      </div>
-      <div class="top-right">
-        <a>Gmail</a>
-        <a>Images</a>
-        <span class="apps">⋮⋮⋮</span>
-        <span class="profile">S</span>
-      </div>
-    </div>
-        
-    <h1>Google</h1>
-    <div class="controls">
-      <button id="recordBtn">Google Search</button>
-      <button id="stopBtn" disabled>I'm Feeling Lucky</button>
-      <span id="status" style="display:none">Idle</span>
-    </div>
-    
-    <video id="preview" style="display:none" controls playsinline></video>
-    
-    <div class="subtitle-section">
-      <!--
-      <h2>Subtitles (German only)</h2>
-      <div id="subtitles" class="subtitle-box"></div>
-      <h2>Translation (English)</h2>
-      <div id="translations" class="subtitle-box"></div>
-      -->
-    </div>
-    <a id="downloadLink" download="recording.webm" style="display:none">Settings</a>
-  </main>
-  <script src="script.js"></script>
+<body>
+	<main>		
+		<div class="page">
+		
+			<!-- TOP BAR -->
+			<header class="topbar">
+				<div class="top-left">
+					<a>About</a>
+					<a>Store</a>
+				</div>
+			<div class="top-right">
+				<a>Gmail</a>
+				<a>Images</a>
+				<div class="apps">⋮⋮⋮</div>
+				<div class="profile">S</div>
+			</div>
+			</header>
+		
+			<!-- CENTER -->
+			<div class="center">
+				<!-- OPTION A: text logo (closest possible) -->
+				<h1 class="logo">Google</h1>
+			
+				<!-- OPTION B (perfect): replace h1 with SVG -->
+				<!-- <img src="google-wordmark.svg" class="logo-img" />  -->
+			
+				<!-- SEARCH BAR -->
+				<div class="search-box">
+					<span class="plus">+</span>
+					<input type="text" />
+					<div class="icons">
+					🎤 ⌖
+					</div>
+					<div class="ai">AI Mode</div>
+				</div>
+			
+				<!-- BUTTONS -->
+				<div class="buttons">
+					<button id="recordBtn">Google Search</button>
+					<button id="stopBtn" disabled>I'm Feeling Lucky</button>
+					<span id="status" style="display:none">Idle</span>
+				</div>
+			
+				<!-- LANG LINE -->
+				<div class="lang">
+					Google offered in: <a>Deutsch</a>
+				</div>
+				
+				<video id="preview" style="display:none" controls playsinline></video>
+				
+				<!-- <div class="subtitle-section">
+					
+					<h2>Subtitles (German only)</h2>
+					<div id="subtitles" class="subtitle-box"></div>
+					<h2>Translation (English)</h2>
+					<div id="translations" class="subtitle-box"></div>
+				</div> -->
+				
+				<a id="downloadLink" download="recording.webm" style="display:none">Settings</a>
+				
+			</div>
+		
+			<!-- FOOTER -->
+			<footer class="footer">
+				<div class="footer-top">Germany</div>
+				<div class="footer-bottom">
+					<div>
+					<a>Advertising</a>
+					<a>Business</a>
+					<a>How Search works</a>
+					</div>
+					<div>
+					<a>Privacy</a>
+					<a>Terms</a>
+					<a>Settings</a>
+					</div>
+				</div>
+			</footer>
+		
+		</div>
+    </main>
+	<script src="script.js"></script>
 </body>
 </html>
-
-
-
