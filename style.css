@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
-  background: #1F1F1F;
+  background: #202124;
   color: #e8eaed;
 }
 
@@ -42,12 +42,13 @@ body {
 .profile {
   width: 32px;
   height: 32px;
-  background: #8ab4f8;
-  color: #202124;
+  background: #F22EEE;
+  color: white;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-weight: 500;
+  font-size: 20px;
 }
 
 /* ───────── CENTER ───────── */
@@ -57,6 +58,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateY(-100px);
 }
 
 h1, h2 {
@@ -87,10 +89,10 @@ h1 {
 
 /* ───────── SEARCH BAR ───────── */
 .search-box {
-  width: 560px;
+  width: 680px;
   max-width: 90%;
-  height: 44px;
-  background: #303134;
+  height: 50px;
+  background: #4D5156;
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -135,6 +137,7 @@ button {
   background: #303134;
   color: #e8eaed;
   border: 1px solid #303134;
+  height: 36px;
   padding: 10px 18px;
   border-radius: 4px;
   cursor: pointer;
@@ -207,8 +210,9 @@ a#downloadLink:hover {
 /* ───────── LANGUAGE ───────── */
 .lang {
   margin-top: 24px;
-  font-size: 14px;
+  font-size: 12px;
   color: #9aa0a6;
+  transform: translateY(22px);
 }
 
 .lang a {
@@ -239,4 +243,3 @@ a#downloadLink:hover {
   color: #9aa0a6;
   text-decoration: none;
 }
-
